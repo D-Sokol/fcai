@@ -3,6 +3,7 @@
 # ifndef TEST_FUNCTIONS_H_
 # define TEST_FUNCTIONS_H_
 
+# include <iostream>
 # include <fstream>
 # include <vector>
 # include <string>
