@@ -34,5 +34,6 @@ add_library(test ${TEST_SRC})
 
 add_executable(test_all tests/test_all.cpp)
 
+target_link_libraries(test fcai)
 target_link_libraries(test_all fcai
                                test)
