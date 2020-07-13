@@ -12,7 +12,7 @@ TestFunctionVector GetAllBitSetTestFunctions();
 
 TEST_RESULT TestBitSet(const std::string& indent, size_t& ok, size_t& fail);
 
-TEST_RESULT TestBitSetConctruct();
+TEST_RESULT TestBitSetConstruct();
 TEST_RESULT TestBitSetCopyConstruct();
 TEST_RESULT TestBitSetCopyConstructEmptyBitSet();
 TEST_RESULT TestBitSetSetAndTest();

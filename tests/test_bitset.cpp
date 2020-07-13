@@ -8,7 +8,7 @@ TestFunctionGroup TestBitSetAll("TestBitSet", &TestBitSet);
 
 TestFunctionVector GetAllBitSetTestFunctions() {
     std::vector<TestFunction> res;
-    res.push_back(TestFunction("TestBitSetConctruct", &TestBitSetConctruct));
+    res.push_back(TestFunction("TestBitSetConstruct", &TestBitSetConstruct));
     res.push_back(TestFunction("TestBitSetSetAndTest", &TestBitSetSetAndTest));
     res.push_back(TestFunction("TestBitSetCopyConstruct", &TestBitSetCopyConstruct));
     res.push_back(TestFunction("TestBitSetAnyAndNone", &TestBitSetAnyAndNone));
@@ -22,6 +22,7 @@ TestFunctionVector GetAllBitSetTestFunctions() {
     res.push_back(TestFunction("TestBitSetResize", &TestBitSetResize));
     res.push_back(TestFunction("TestBitSetOperatorTilda", &TestBitSetOperatorTilda));
     res.push_back(TestFunction("TestBitSetCount", &TestBitSetCount));
+    res.push_back(TestFunction("TestBitSetCountZeros", &TestBitSetCountZeros));
     res.push_back(TestFunction("TestBitSetCountZeros", &TestBitSetCount));
     res.push_back(TestFunction("TestBitSetOperatorAnd", &TestBitSetOperatorAnd));
     res.push_back(TestFunction("TestBitSetOperatorOr", &TestBitSetOperatorOr));
@@ -59,7 +60,7 @@ TEST_RESULT TestBitSet(const std::string& indent, size_t& ok, size_t& fail) {
     return res;
 }
 
-TEST_RESULT TestBitSetConctruct() {
+TEST_RESULT TestBitSetConstruct() {
     const size_t len = 100;
     FCA::BitSet bs(len);
     if (bs.size() != len) {
