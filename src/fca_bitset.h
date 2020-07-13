@@ -173,7 +173,7 @@ FCA::BasicBitSet<Block>::~BasicBitSet() {
 
 template <typename Block>
 bool FCA::BasicBitSet<Block>::any() const {
-    for (size_t i = 0; i + 1 < bitsSize; ++i) {
+    for (size_t i = 0; i < bitsSize; ++i) {
         if (0 != bits[i]) {
             return true;
         }
