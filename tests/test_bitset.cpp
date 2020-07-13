@@ -12,6 +12,7 @@ TestFunctionVector GetAllBitSetTestFunctions() {
     res.push_back(TestFunction("TestBitSetSetAndTest", &TestBitSetSetAndTest));
     res.push_back(TestFunction("TestBitSetCopyConstruct", &TestBitSetCopyConstruct));
     res.push_back(TestFunction("TestBitSetAnyAndNone", &TestBitSetAnyAndNone));
+    res.push_back(TestFunction("TestBitSetAnyAndNoneForAlmostEmpty", &TestBitSetAnyAndNoneForAlmostEmpty));
     res.push_back(TestFunction("TestBitSetSetAllAndTestAll", &TestBitSetSetAllAndTestAll));
     res.push_back(TestFunction("TestBitSetFlipAll", &TestBitSetFlipAll));
     res.push_back(TestFunction("TestBitSetFlip", &TestBitSetFlip));
@@ -127,6 +128,22 @@ TEST_RESULT TestBitSetAnyAndNone() {
     }
     if (bs.any() || !bs.none()) {
         return TEST_RESULT_FAIL;
+    }
+    return TEST_RESULT_OK;
+}
+
+TEST_RESULT TestBitSetAnyAndNoneForAlmostEmpty() {
+    const size_t len = 13;
+    for (size_t index = 0; index < len; ++index) {
+        FCA::BitSet bs(len);
+        if (bs.any() || !bs.none())
+            return TEST_RESULT_FAIL;
+        bs.set(index);
+        if (!bs.any() || bs.none())
+            return TEST_RESULT_FAIL;
+        bs.reset(index);
+        if (bs.any() || !bs.none())
+            return TEST_RESULT_FAIL;
     }
     return TEST_RESULT_OK;
 }
