@@ -295,8 +295,8 @@ template <typename Block>
 void FCA::BasicBitSet<Block>::resize(const size_t length) {
     size_t bitsSizeNew = ::BlocksReqired<Block>(length);
     Block* bitsNew = new Block[bitsSizeNew]();
-    memcpy(bitsNew, bits, (bitsSize < bitsSizeNew ? bitsSize : bitsSizeNew) * BlockSize);
     if (0 != bits) {
+        memcpy(bitsNew, bits, (bitsSize < bitsSizeNew ? bitsSize : bitsSizeNew) * BlockSize);
         delete [] bits;
     }
     bits = bitsNew;
