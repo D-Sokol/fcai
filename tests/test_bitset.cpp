@@ -40,6 +40,10 @@ TestFunctionVector GetAllBitSetTestFunctions() {
     res.push_back(TestFunction("TestBitSetOperatorGreaterEqual", &TestBitSetOperatorGreaterEqual));
     res.push_back(TestFunction("TestBitSetCopyConstructEmptyBitSet", &TestBitSetCopyConstructEmptyBitSet));
     res.push_back(TestFunction("TestBitSetIsPrefixEqual", &TestBitSetIsPrefixEqual));
+    res.push_back(TestFunction("TestLogicAnd", &TestLogicAnd));
+    res.push_back(TestFunction("TestLogicOr", &TestLogicOr));
+    res.push_back(TestFunction("TestLogicXOr", &TestLogicXOr));
+    res.push_back(TestFunction("TestLogicDifference", &TestLogicDifference));
     return res;
 }
 
@@ -863,5 +867,81 @@ TEST_RESULT TestBitSetIsPrefixEqual() {
     }
     bs1.reset(65);
 
+    return TEST_RESULT_OK;
+}
+
+TEST_RESULT TestLogicAnd() {
+    FCA::BitSet bs1(4);
+    FCA::BitSet bs2(4);
+
+    bs1.set(1);
+    bs1.set(3);
+
+    bs2.set(2);
+    bs2.set(3);
+
+    FCA::BitSet result = bs1 & bs2;
+    const std::vector<bool> expected = {false, false, false, true};
+    for (size_t i = 0; i < expected.size(); ++i) {
+        if (expected[i] != result.test(i))
+            return TEST_RESULT_FAIL;
+    }
+    return TEST_RESULT_OK;
+}
+
+TEST_RESULT TestLogicOr() {
+    FCA::BitSet bs1(4);
+    FCA::BitSet bs2(4);
+
+    bs1.set(1);
+    bs1.set(3);
+
+    bs2.set(2);
+    bs2.set(3);
+
+    FCA::BitSet result = bs1 | bs2;
+    const std::vector<bool> expected = {false, true, true, true};
+    for (size_t i = 0; i < expected.size(); ++i) {
+        if (expected[i] != result.test(i))
+            return TEST_RESULT_FAIL;
+    }
+    return TEST_RESULT_OK;
+}
+
+TEST_RESULT TestLogicXOr() {
+    FCA::BitSet bs1(4);
+    FCA::BitSet bs2(4);
+
+    bs1.set(1);
+    bs1.set(3);
+
+    bs2.set(2);
+    bs2.set(3);
+
+    FCA::BitSet result = bs1 ^ bs2;
+    const std::vector<bool> expected = {false, true, true, false};
+    for (size_t i = 0; i < expected.size(); ++i) {
+        if (expected[i] != result.test(i))
+            return TEST_RESULT_FAIL;
+    }
+    return TEST_RESULT_OK;
+}
+
+TEST_RESULT TestLogicDifference() {
+    FCA::BitSet bs1(4);
+    FCA::BitSet bs2(4);
+
+    bs1.set(1);
+    bs1.set(3);
+
+    bs2.set(2);
+    bs2.set(3);
+
+    FCA::BitSet result = bs1 - bs2;
+    const std::vector<bool> expected = {false, true, false, false};
+    for (size_t i = 0; i < expected.size(); ++i) {
+        if (expected[i] != result.test(i))
+            return TEST_RESULT_FAIL;
+    }
     return TEST_RESULT_OK;
 }

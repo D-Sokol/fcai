@@ -43,3 +43,8 @@ TEST_RESULT TestBitSetOperatorLessEqual();
 TEST_RESULT TestBitSetOperatorGreater();
 TEST_RESULT TestBitSetOperatorGreaterEqual();
 TEST_RESULT TestBitSetIsPrefixEqual();
+TEST_RESULT TestLogicAnd();
+TEST_RESULT TestLogicOr();
+TEST_RESULT TestLogicXOr();
+TEST_RESULT TestLogicDifference();
+
