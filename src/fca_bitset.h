@@ -458,28 +458,30 @@ bool FCA::BasicBitSet<Block>::operator >=(const FCA::BasicBitSet<Block>& a) {
     return a.is_subset_of(*this);
 }
 
-template <typename Block>
-FCA::BasicBitSet<Block> operator &(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
-    FCA::BasicBitSet<Block> res(a);
-    return res &= b;
-}
+namespace FCA {
+    template<typename Block>
+    FCA::BasicBitSet<Block> operator&(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
+        FCA::BasicBitSet<Block> res(a);
+        return res &= b;
+    }
 
-template <typename Block>
-FCA::BasicBitSet<Block> operator |(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
-    FCA::BasicBitSet<Block> res(a);
-    return res |= b;
-}
+    template<typename Block>
+    FCA::BasicBitSet<Block> operator|(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
+        FCA::BasicBitSet<Block> res(a);
+        return res |= b;
+    }
 
-template <typename Block>
-FCA::BasicBitSet<Block> operator ^(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
-    FCA::BasicBitSet<Block> res(a);
-    return res ^= b;
-}
+    template<typename Block>
+    FCA::BasicBitSet<Block> operator^(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
+        FCA::BasicBitSet<Block> res(a);
+        return res ^= b;
+    }
 
-template <typename Block>
-FCA::BasicBitSet<Block> operator -(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
-    FCA::BasicBitSet<Block> res(a);
-    return res -= b;
+    template<typename Block>
+    FCA::BasicBitSet<Block> operator-(const FCA::BasicBitSet<Block>& a, const FCA::BasicBitSet<Block>& b) {
+        FCA::BasicBitSet<Block> res(a);
+        return res -= b;
+    }
 }
 
 template <typename Block>
